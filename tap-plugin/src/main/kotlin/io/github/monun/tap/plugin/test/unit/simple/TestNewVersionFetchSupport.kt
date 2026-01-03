@@ -12,18 +12,10 @@ class TestNewVersionFetchSupport : SimpleTestUnit() {
             }
         }
 
-        val oldBukkitVersionMethod = with("v\\d+_\\d+_R\\d+".toPattern().matcher(Bukkit.getServer()::class.java.`package`.name)) {
-            when {
-                find() -> group()
-                else -> throw NoSuchElementException("No such bukkit version exists")
-            }
-        }
-
 
         message("fetched minecraft version (old): $oldMinecraftVersionMethod")
         message("fetched minecraft version (new): ${Bukkit.getServer().minecraftVersion}")
 
-        message("fetched bukkit version (old): $oldBukkitVersionMethod")
         message("fetched bukkit version (new): ${Bukkit.getServer().bukkitVersion}")
     }
 }

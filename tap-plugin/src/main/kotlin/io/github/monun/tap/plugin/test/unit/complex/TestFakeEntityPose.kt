@@ -4,7 +4,7 @@ import io.github.monun.tap.fake.FakeEntity
 import io.github.monun.tap.fake.FakeEntityServer
 import io.github.monun.tap.fake.tap
 import io.github.monun.tap.plugin.test.ComplexTestUnit
-import io.github.monun.tap.protocol.AnimationType
+import net.kyori.adventure.text.Component.text
 import org.bukkit.Bukkit
 import org.bukkit.EntityEffect
 import org.bukkit.entity.Player
@@ -63,7 +63,7 @@ class TestFakeEntityPose : ComplexTestUnit() {
     }
 
     private fun spawnBody(player: Player) {
-        fakeEntityServer.spawnPlayer(player.location, "●▅▇█▇▆▅▄▇", player.playerProfile.properties).apply {
+        fakeEntityServer.spawnPlayer(player.location, "Test", player.playerProfile.properties).apply {
             updateMetadata {
                 tap().pose = Pose.SLEEPING
             }

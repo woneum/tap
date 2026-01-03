@@ -17,9 +17,13 @@
 
 package io.github.monun.tap.plugin
 
+import io.github.monun.tap.item.damageArmor
+import io.github.monun.tap.item.damageSlot
 import io.github.monun.tap.plugin.test.TapTest
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
+import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.plugin.java.JavaPlugin
 
 class TapPlugin : JavaPlugin() {
@@ -38,6 +42,10 @@ class TapPlugin : JavaPlugin() {
             TapTest.runTestComplexTestAll()
         } else if (args[0] == "stop") {
             TapTest.cancelTestComplexTestAll()
+        } else if (args[0] == "armor") {
+            (sender as Player).inventory.damageArmor(10.0)
+        } else if (args[0] == "slot") {
+            (sender as Player).inventory.damageSlot(EquipmentSlot.HAND, 5)
         }
 
         return true

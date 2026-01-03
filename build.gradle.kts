@@ -7,7 +7,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -22,7 +22,7 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
 
     repositories {
-        maven("https://papermc.io/repo/repository/maven-public/")
+        maven("https://repo.papermc.io/repository/maven-public/")
     }
 
     dependencies {
@@ -48,16 +48,16 @@ listOf("api", "core").forEach { projectName ->
         apply(plugin = "org.jetbrains.dokka")
 
         tasks {
-            create<Jar>("sourcesJar") {
+            register<Jar>("sourcesJar") {
                 archiveClassifier.set("sources")
                 from(sourceSets["main"].allSource)
             }
 
-            create<Jar>("dokkaJar") {
+            register<Jar>("dokkaJar") {
                 archiveClassifier.set("javadoc")
-                dependsOn("dokkaHtml")
+                dependsOn("dokkaGenerateHtml")
 
-                from("$buildDir/dokka/html/") {
+                from(layout.buildDirectory.dir("dokka/html")) {
                     include("**")
                 }
             }
@@ -68,7 +68,7 @@ listOf("api", "core").forEach { projectName ->
 idea {
     module {
         excludeDirs.add(file(".server"))
-        excludeDirs.addAll(allprojects.map { it.buildDir })
+        excludeDirs.addAll(allprojects.map { it.layout.buildDirectory.get().asFile })
         excludeDirs.addAll(allprojects.map { it.file(".gradle") })
     }
 }

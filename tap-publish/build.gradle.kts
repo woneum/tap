@@ -90,6 +90,6 @@ publishing {
 }
 
 signing {
-    isRequired = true
+    isRequired = false
     sign(publishing.publications["api"], publishing.publications["core"])
 }

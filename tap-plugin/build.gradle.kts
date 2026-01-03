@@ -43,7 +43,7 @@ tasks {
             rename("clip.yml", "plugin.yml")
         }
     }.also { jar ->
-        register<Copy>("test${classifier.capitalized()}Jar") {
+        register<Copy>("test${classifier.capitalize()}Jar") {
             val prefix = rootProject.name
             val plugins = rootProject.file(".server/plugins-$classifier")
             val update = File(plugins, "update")
@@ -51,11 +51,7 @@ tasks {
 
             from(jar)
 
-            if (plugins.list()?.any { regex.matches(it) } == true) {
-                into(update)
-            } else {
-                into(plugins)
-            }
+            into(plugins)
 
             doLast {
                 update.mkdirs()
@@ -69,3 +65,4 @@ tasks {
     registerJar("clip")
 }
 
+fun String.capitalize(): String = replaceFirstChar { it.uppercase() }
