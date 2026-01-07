@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.tap.v1_21_11.protocol
+package io.github.monun.tap.v1_21_9.protocol
 
 import com.mojang.datafixers.util.Pair
 import io.github.monun.tap.protocol.*

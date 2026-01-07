@@ -120,5 +120,5 @@ object LibraryLoader {
         Bukkit.getServer().minecraftVersion
     }
 
-    val libraryVersion by lazy { "v1_21_10" }
+    val libraryVersion by lazy { "v${minecraftVersion.replace('.', '_')}" }
 }

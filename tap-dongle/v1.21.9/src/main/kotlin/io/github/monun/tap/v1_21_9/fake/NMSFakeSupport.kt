@@ -15,13 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.monun.tap.v1_21_11.fake
+package io.github.monun.tap.v1_21_9.fake
 
 import com.destroystokyo.paper.profile.CraftPlayerProfile
 import com.destroystokyo.paper.profile.ProfileProperty
 import io.github.monun.tap.fake.FakeSkinParts
 import io.github.monun.tap.fake.FakeSupport
-import io.github.monun.tap.v1_21_11.protocol.NMSPacketContainer
+import io.github.monun.tap.v1_21_9.protocol.NMSPacketContainer
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.Connection
 import net.minecraft.network.protocol.PacketFlow
