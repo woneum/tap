@@ -129,7 +129,10 @@ class NMSFakeSupport : FakeSupport {
             )
         }
 
-        val packet = ClientboundAddEntityPacket(entity.handle, 0, BlockPos(entity.location.x.toInt(), entity.location.y.toInt(), entity.location.z.toInt()))
+        val nmsEntity = entity.handle
+        val packet = ClientboundAddEntityPacket(nmsEntity.id, nmsEntity.uuid, nmsEntity.x, nmsEntity.y, nmsEntity.z, nmsEntity.xRot, nmsEntity.yRot, nmsEntity.type, 0, nmsEntity.deltaMovement,
+            nmsEntity.yHeadRot.toDouble()
+        )
         packets.add(NMSPacketContainer(packet))
 
         return packets.toTypedArray()
